@@ -11,7 +11,7 @@ public class Empresa
     [Required]
     [DisplayName("Nome da Empresa")]
     [MaxLength(50)]
-    public string NomeEmpresa { get; set; }
+    public string? NomeEmpresa { get; set; }
 
     [DisplayName("Funcionários")]
     public IList<Usuario>? Funcionarios { get; set; }
