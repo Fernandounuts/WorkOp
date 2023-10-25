@@ -1,6 +1,7 @@
 using back_end.Infra;
 using back_end.Interfaces;
 using back_end.Models.UsuarioModel;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace back_end.Repository;
@@ -28,5 +29,10 @@ public class UsuarioRepository : IUsuarioRepositoryInterface
     public Task<List<Competencia>> GetAllCompetencias(long? id)
     {
         return _context.Competencias.Where(c => c.UsuarioId == id).ToListAsync();
+    }
+
+    public bool UsuarioExists(long? id)
+    {
+        return _context.Usuarios.Any(u => u.UsuarioId == id) ? true : false;
     }
 }
