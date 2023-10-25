@@ -1,6 +1,5 @@
 using back_end.Interfaces;
 using back_end.Models.UsuarioModel;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace back_end.Controllers;
@@ -16,57 +15,57 @@ public class UsuarioController : ControllerBase
         _user = user;
     }
 
-    [HttpGet("{UsuarioId}/Empregos")]
+    [HttpGet("{usuarioId}/Empregos")]
     [ProducesResponseType(200, Type = typeof(IList<Emprego>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> GetPastExperiences(long? UsuarioId)
+    public async Task<IActionResult> GetPastExperiences(long? usuarioId)
     {
-        if (UsuarioId == null)
+        if (usuarioId == null)
         {
             return NotFound();
         }
 
-        if (!_user.UsuarioExists(UsuarioId))
+        if (!_user.UsuarioExists(usuarioId))
         {
             return NotFound();
         }
 
-        return Ok(await _user.GetAllPastExperiences(UsuarioId));
+        return Ok(await _user.GetAllPastExperiences(usuarioId));
     }
 
-    [HttpGet("{UsuarioId}/Enderecos")]
+    [HttpGet("{usuarioId}/Enderecos")]
     [ProducesResponseType(200, Type = typeof(IList<Emprego>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> GetAllEnderecos(long? UsuarioId)
+    public async Task<IActionResult> GetAllEnderecos(long? usuarioId)
     {
-        if (UsuarioId == null)
+        if (usuarioId == null)
         {
             return NotFound();
         }
 
-        if (!_user.UsuarioExists(UsuarioId))
+        if (!_user.UsuarioExists(usuarioId))
         {
             return NotFound();
         }
 
-        return Ok(await _user.GetAllEnderecos(UsuarioId));
+        return Ok(await _user.GetAllEnderecos(usuarioId));
     }
 
-    [HttpGet("{UsuarioId}/Competencias")]
+    [HttpGet("{usuarioId}/Competencias")]
     [ProducesResponseType(200, Type = typeof(IList<Emprego>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> GetAllCompetencias(long? UsuarioId)
+    public async Task<IActionResult> GetAllCompetencias(long? usuarioId)
     {
-        if (UsuarioId == null)
+        if (usuarioId == null)
         {
             return NotFound();
         }
 
-        if (!_user.UsuarioExists(UsuarioId))
+        if (!_user.UsuarioExists(usuarioId))
         {
             return NotFound();
         }
 
-        return Ok(await _user.GetAllCompetencias(UsuarioId));
+        return Ok(await _user.GetAllCompetencias(usuarioId));
     }
 }
