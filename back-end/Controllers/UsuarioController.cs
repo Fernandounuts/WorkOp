@@ -1,4 +1,6 @@
-using back_end.Infra;
+using back_end.Interfaces;
+using back_end.Models.UsuarioModel;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace back_end.Controllers;
@@ -7,12 +9,27 @@ namespace back_end.Controllers;
 [Route("api/[Controller]")]
 public class UsuarioController : ControllerBase
 {
-    private readonly AppDbContext _context;
+    private readonly IUsuarioRepositoryInterface _user;
 
-    public UsuarioController(AppDbContext context)
+    public UsuarioController(IUsuarioRepositoryInterface user)
     {
-        _context = context;
+        _user = user;
     }
-    
-    
+
+    [HttpGet("{UsuarioId}")]
+    [ProducesResponseType(200, Type = typeof(IList<Emprego>))]
+    public async Task<IActionResult> GetPastExperiences(long? UsuarioId)
+    {
+        if (UsuarioId == null)
+        {
+            return NotFound();
+        }
+
+        if (!_user.UsuarioExists(UsuarioId))
+        {
+            return NotFound();
+        }
+
+        return Ok(_user.GetAllPastExperiences(UsuarioId));
+    }
 }
