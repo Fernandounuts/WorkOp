@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace back_end.Controllers;
 
+[ApiController]
+[Route("api/[Controller]")]
 public class UsuarioController : ControllerBase
 {
     private readonly AppDbContext _context;
@@ -11,4 +13,6 @@ public class UsuarioController : ControllerBase
     {
         _context = context;
     }
+    
+    
 }
