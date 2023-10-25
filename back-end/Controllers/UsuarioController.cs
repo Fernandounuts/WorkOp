@@ -16,8 +16,9 @@ public class UsuarioController : ControllerBase
         _user = user;
     }
 
-    [HttpGet("{UsuarioId}")]
+    [HttpGet("{UsuarioId}/Empregos")]
     [ProducesResponseType(200, Type = typeof(IList<Emprego>))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetPastExperiences(long? UsuarioId)
     {
         if (UsuarioId == null)
@@ -30,6 +31,42 @@ public class UsuarioController : ControllerBase
             return NotFound();
         }
 
-        return Ok(_user.GetAllPastExperiences(UsuarioId));
+        return Ok(await _user.GetAllPastExperiences(UsuarioId));
+    }
+
+    [HttpGet("{UsuarioId}/Enderecos")]
+    [ProducesResponseType(200, Type = typeof(IList<Emprego>))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetAllEnderecos(long? UsuarioId)
+    {
+        if (UsuarioId == null)
+        {
+            return NotFound();
+        }
+
+        if (!_user.UsuarioExists(UsuarioId))
+        {
+            return NotFound();
+        }
+
+        return Ok(await _user.GetAllEnderecos(UsuarioId));
+    }
+
+    [HttpGet("{UsuarioId}/Competencias")]
+    [ProducesResponseType(200, Type = typeof(IList<Emprego>))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetAllCompetencias(long? UsuarioId)
+    {
+        if (UsuarioId == null)
+        {
+            return NotFound();
+        }
+
+        if (!_user.UsuarioExists(UsuarioId))
+        {
+            return NotFound();
+        }
+
+        return Ok(await _user.GetAllCompetencias(UsuarioId));
     }
 }
