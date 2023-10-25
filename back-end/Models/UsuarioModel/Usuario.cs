@@ -2,7 +2,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
-namespace back_end.Models.User;
+namespace back_end.Models.UsuarioModel;
 
 public class Usuario
 {

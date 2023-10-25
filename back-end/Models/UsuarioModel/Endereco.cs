@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace back_end.Models.User;
+namespace back_end.Models.UsuarioModel;
 
 public class Endereco
 {

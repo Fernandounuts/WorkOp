@@ -1,4 +1,4 @@
-namespace back_end.Models.User;
+namespace back_end.Models.UsuarioModel;
 
 public enum Estados
 {
