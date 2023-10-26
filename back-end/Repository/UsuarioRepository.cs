@@ -35,4 +35,34 @@ public class UsuarioRepository : IUsuarioRepositoryInterface
     {
         return _context.Usuarios.Any(u => u.UsuarioId == id) ? true : false;
     }
+
+    public async Task<bool> CreateUsuario(Usuario usuario)
+    {
+        try
+        {
+            await _context.AddAsync(usuario);
+            return await Save();
+        }
+        catch (DbUpdateException)
+        {
+            return false;
+        }
+    }
+
+    public async Task<bool> UpdateUsuario(Usuario usuario)
+    {
+        _context.Update(usuario);
+        return await Save();
+    }
+
+    public async Task<bool> DeleteUsuario(Usuario usuario)
+    {
+        _context.Remove(usuario);
+        return await Save();
+    }
+
+    public async Task<bool> Save()
+    {
+        return await _context.SaveChangesAsync() > 0;
+    }
 }
