@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace back_end.Interfaces;
 
-public interface IUsuarioRepositoryInterface
+public interface IUsuarioRepository
 {
     Task<List<Emprego>> GetAllPastExperiences(long? id);
     Task<List<Endereco>> GetAllEnderecos(long? id);

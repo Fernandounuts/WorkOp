@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace back_end.Repository;
 
-public class UsuarioRepository : IUsuarioRepositoryInterface
+public class UsuarioRepository : IUsuarioRepository
 {
     private readonly AppDbContext _context;
 

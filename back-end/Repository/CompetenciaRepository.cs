@@ -4,7 +4,7 @@ using back_end.Models.UsuarioModel;
 
 namespace back_end.Repository;
 
-public class CompetenciaRepository : ICompetenciaRepositoryInterface
+public class CompetenciaRepository : ICompetenciaRepository
 {
     private readonly AppDbContext _context;
 

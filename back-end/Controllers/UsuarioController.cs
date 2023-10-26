@@ -8,9 +8,9 @@ namespace back_end.Controllers;
 [Route("api/[Controller]")]
 public class UsuarioController : ControllerBase
 {
-    private readonly IUsuarioRepositoryInterface _user;
+    private readonly IUsuarioRepository _user;
 
-    public UsuarioController(IUsuarioRepositoryInterface user)
+    public UsuarioController(IUsuarioRepository user)
     {
         _user = user;
     }
